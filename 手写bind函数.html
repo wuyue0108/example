@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function test(a, b, c) {
+        console.log(a, b, c)
+        console.log(this)
+      }
+      test(1, 2, 3) //window
+      const test1 = test.bind({ name: 'zhangsan' }, 2, 3, 4)
+      test1() //obj
+
+      //手写bind函数
+      function test(a, b, c) {
+        console.log(a, b, c)
+        console.log(this)
+        return 'shuchuzhengchang'
+      }
+      Function.prototype.myBind = function () {
+        const self = this
+        const arg = Array.prototype.slice.call(arguments)
+        const obj = arg.shift()
+        return function () {
+          return self.call(obj, arg)
+        }
+      }
+      const res = test.myBind({ name: 'zhangsan' }, 1, 2, 3)
+      res()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //全局作用域和函数作用域
+      let a1 = 1
+      function fn1() {
+        let a2 = 2
+        console.log(a2) //2
+        console.log(a3) //error
+        function fn2() {
+          let a3 = 3
+          console.log(a3) //1
+          console.log(a2) //2
+        }
+        fn2()
+      }
+      fn1()
+      console.log(a1) //1
+      console.log(a2) // error
+      console.log(a3) //error
+
+      //块级作用域
+      {
+        let a = 1
+      }
+      console.log('a', a) //error
+    </script>
+  </body>
+</html>

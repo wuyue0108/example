@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function fn() {
+      //   console.log(this)
+      // }
+      // fn() // window
+      // fn.call({ name: 'obj' }) //obj
+      // fn.apply({ name: 'obj' }) //obj
+      // const fn1 = fn.bind({ name: 'obj' })
+      // fn1() //obj
+
+      class Person {
+        constructor(name, age) {
+          console.log('constructor里面的this', this) //
+          this.name = name
+          this.age = age
+        }
+        test() {
+          console.log('test里面的this', this)
+        }
+        test1() {
+          setTimeout(function () {
+            console.log(this)
+          }, 0)
+        }
+        test2() {
+          setTimeout(() => {
+            console.log(this)
+          }, 0)
+        }
+      }
+      const zhangsan = new Person('zhangsan', 20)
+      zhangsan.test() //obj obj
+      zhangsan.test1() //window
+      zhangsan.test2() //obj 箭头函数里面的this值和上一级作用域保持一致
+    </script>
+  </body>
+</html>

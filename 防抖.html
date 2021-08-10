@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="" />
+  </body>
+  <script>
+    //缺点：新建全局变量，防抖逻辑与业务逻辑混在一起
+    let inp = document.querySelector('input')
+    let t = null
+    inp.oninput = function () {
+      if (t !== null) {
+        clearTimeout(t)
+      }
+      t = setTimeout(() => {
+        console.log(this.value)
+      }, 500)
+    }
+  </script>
+
+  <script>
+    //方法二
+    let inp = document.querySelector('input')
+    inp.oninput = debounce(function () {
+      console.log(this.value)
+    }, 500)
+
+    function debounce(fn, delay) {
+      let t = null
+      return function () {
+        if (t !== null) {
+          clearTimeout(t)
+        }
+        t = setTimeout(() => {
+          fn.call(this)
+        }, delay)
+      }
+    }
+  </script>
+</html>

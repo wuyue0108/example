@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    /**
+     * @param {number[][]} matrix
+     * @param {number} target
+     * @return {boolean}
+     */
+
+    var searchMatrix = function (matrix, target) {
+      let m = matrix.length
+      let n = matrix[0].length
+
+      let i = 0
+      let j = n - 1
+
+      while (i < m && j >= 0) {
+        if (matrix[i][j] === target) return true
+        else if (matrix[i][j] < target && matrix[i][j] !== undefined) i++
+        else if (matrix[i][j] > target && matrix[i][j] !== undefined) j--
+      }
+      return false
+    }
+    let matrix = [[1]]
+    let target = 2
+    console.log(searchMatrix(matrix, target))
+  </script>
+</html>

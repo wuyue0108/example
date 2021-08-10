@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [
+        [0, 1],
+        [2, 3],
+        [4, [5, 6, 7]],
+      ]
+
+      //tostring
+      const flatten1 = (arr) => {
+        return arr
+          .toString()
+          .split(',')
+          .map((item) => {
+            return +item
+          })
+      }
+
+      //递归
+      let res = []
+      const flatten2 = (arr) => {
+        for (let i = 0; i < arr.length; i++) {
+          if (Array.isArray(arr[i])) {
+            flatten2(arr[i])
+          } else {
+            res.push(arr[i])
+          }
+        }
+        return res
+      }
+      console.log(flatten2(arr))
+
+      //reduce
+      const flatten3 = (arr) => {
+        return arr.reduce(
+          (pre, cur) => pre.concat(Array.isArray(cur) ? flatten3(cur) : cur),
+          []
+        )
+      }
+      console.log(flatten3(arr))
+      //...
+    </script>
+  </body>
+</html>

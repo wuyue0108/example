@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    /**
+     * @param {string} version1
+     * @param {string} version2
+     * @return {number}
+     */
+    var compareVersion = function (version1, version2) {
+      let nums1 = version1.split('.')
+      let nums2 = version2.split('.')
+
+      let MAX = Math.max(nums1.length, nums2.length)
+
+      for (let i = 0; i < MAX; i++) {
+        let v1 = nums1[i] == undefined ? 0 : parseInt(nums1[i])
+        let v2 = nums2[i] == undefined ? 0 : parseInt(nums2[i])
+        if (v1 !== v2) {
+          if (v1 > v2) return 1
+          else return -1
+        }
+      }
+      return 0
+    }
+    let version1 = '1.01'
+    let version2 = '1.001'
+    console.log(compareVersion(version1, version2))
+  </script>
+</html>

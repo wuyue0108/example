@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="" alt="" />
+    <script>
+      // const findOnly = (length, nums) => {
+      //   let map = new Map()
+      //   for (let i = 0; i < length; i++) {
+      //     if (!map.has(nums[i])) {
+      //       map.set(nums[i], i)
+      //     } else {
+      //       map.set(nums[i], false)
+      //     }
+      //   }
+      //   values = map.values()
+      //   for (value of values) {
+      //     if (value !== false) {
+      //       return value
+      //     }
+      //   }
+      //   return -1
+      // }
+      // const length = 12
+      // const nums = [1, 2, 2, 1, 2, 3, 1, -123, 345, 5, 4, 6]
+      // console.log(findOnly(length, nums))
+
+      const noRepeat = (str) => {
+        const arr = str.split('')
+        const newArr = Array.from(new Set(arr))
+        return newArr.toString()
+      }
+      const str = 'abcdefggggfedcbc'
+      console.log(noRepeat(str))
+    </script>
+  </body>
+</html>
